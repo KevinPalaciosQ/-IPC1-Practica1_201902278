@@ -85,12 +85,41 @@ public class Practica1 {
         System.out.println("✵INGRESE EL TAMAÑO DE CANTIDAD DE COMIDA: [0-28]:  " + comida);
         System.out.println("✵INGRESE EL TAMAÑO DE CANTIDAD DE PAREDES: [0-13]:  " + paredes);
         System.out.println("✵INGRESE CANTIDAD DE TRAMPAS: [0-10]:              "+ trampas);
+         int m=x*y;
+        int n=m;
         
-        
-       
+        System.out.println("INTRODUZCA SU POSICIÓN INICIAL");
+        System.out.println("----------------------------------------");
+        System.out.println("JUGADOR:  "+nombre);
+        if(n >= 0 && n<=100) {
+            //Parte superior del tablero
+            for(int i = 0; i < n; i++) {
+                System.out.print("_");
+            }
+            System.out.println();
+           
+            //Centro del tablero
+            for(int i = 0; i < n-2; i++) {
+                System.out.print("|");
+                for(int j = 0; j < n-2; j++) {
+                    System.out.print(" ");
+                }
+                System.out.println("|");
+            }
+           
+            //Parte inferior del tablero
+            for(int i = 0; i < n; i++) {
+                System.out.print("_");
+            }
+        }
+        System.out.println("                                                      ");
+        System.out.println("                                                      ");
+        System.out.println("-----------------------------------------------------");
+        System.out.println("INTRODUZCA SU POSICIÓN INICIAL: ");
+        System.out.println("-----------------------------------------------------");
         switch(personaje){
             case 1:// personaje 1
-                System.out.println("El personaje Elegido es: ☺ ");
+                System.out.println("☺ ");
                 break;
             case 2:// personaje 2
                 System.out.println("El personaje Elegido es: ☻ ");
@@ -121,7 +150,7 @@ public class Practica1 {
                 break;    
                 
         }
-        System.out.println(+personaje);
+        
          System.out.println("✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯");
          System.out.println("TABLERO");//Aquí va el tablero 
         System.out.print("✯JUGADOR:"+nombre+"       PUNTEO;"+"          VIDAS");
