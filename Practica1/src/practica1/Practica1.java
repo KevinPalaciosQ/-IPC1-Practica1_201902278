@@ -45,10 +45,11 @@ public class Practica1 {
         } while (opcion != 3);
     }
 
-    public static void InicioJuego() {   Scanner tecla = new Scanner(System.in);
+    public static void InicioJuego() {   Scanner tecla = new Scanner(System.in);//se llama al juego
         String nombre;
         String tamano;
         int personaje;
+        String movimiento;
         
         System.out.print(" POR FAVOR INGRESE SU NOMBRE:");
         nombre=tecla.nextLine();
@@ -88,10 +89,10 @@ public class Practica1 {
          int m=x*y;
         int n=m;
         
-        System.out.println("INTRODUZCA SU POSICIÓN INICIAL");
+
         System.out.println("----------------------------------------");
         System.out.println("JUGADOR:  "+nombre);
-        if(n >= 0 && n<=100) {
+        if(n >= 0 && n<=100) {//Matriz del tablero
             //Parte superior del tablero
             for(int i = 0; i < n; i++) {
                 System.out.print("_");
@@ -116,46 +117,52 @@ public class Practica1 {
         System.out.println("                                                      ");
         System.out.println("-----------------------------------------------------");
         System.out.println("INTRODUZCA SU POSICIÓN INICIAL: ");
+        movimiento=tecla.next();
+        String[] Movimiento = movimiento.split(",");
+        int v = Integer.parseInt(Movimiento[0]);
+        int w = Integer.parseInt(Movimiento[1]);
+       
         System.out.println("-----------------------------------------------------");
         switch(personaje){
             case 1:// personaje 1
-                System.out.println("☺ ");
+                System.out.println(+v+","+w+"☺");// Agregué aca el v,w porque la matriz me da error
                 break;
             case 2:// personaje 2
-                System.out.println("El personaje Elegido es: ☻ ");
+                System.out.println("☻");
                 break;
             case 3:// personaje 3
-                System.out.println("El personaje Elegido es: ♥ ");
+                System.out.println("♥");
                 break;        
             case 4:// personaje 4
-                System.out.println("El personaje Elegido es: ♣ ");
+                System.out.println("♣");
                 break;
             case 5:// personaje 5
-                System.out.println("El personaje Elegido es: ♠ ");
+                System.out.println("♠");
                 break;
             case 6:// personaje 6
-                System.out.println("El personaje Elegido es: ♂ ");
+                System.out.println("♂");
                 break;
             case 7:// personaje 7
-                System.out.println("El personaje Elegido es: ♂ ");
+                System.out.println("♂");
                 break;
             case 8:// personaje 8
-                System.out.println("El personaje Elegido es: ☼ ");
+                System.out.println("☼");
                 break;
             case 9:// personaje 9
-                System.out.println("El personaje Elegido es: ♫ ");
+                System.out.println("♫");
                 break;
             case 10:// personaje 10
-                System.out.println("El personaje Elegido es: ♪ ");
+                System.out.println("♪");
                 break;    
-                
+           
         }
-        
+          
+          
          System.out.println("✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯");
          System.out.println("TABLERO");//Aquí va el tablero 
         System.out.print("✯JUGADOR:"+nombre+"       PUNTEO;"+"          VIDAS");
     }
-   public static int SolicitarComida(String mensaje, int minimo, int maximo) {
+   public static int SolicitarComida(String mensaje, int minimo, int maximo) {//Rango comida [0-28]
         Scanner tecla = new Scanner(System.in);
 
         
@@ -168,7 +175,7 @@ public class Practica1 {
                 if (comida >= minimo && comida <= maximo) {
                     return comida;
                 } else {
-                    System.out.println("Número fuera de rango. Intente de nuevo");
+                    System.out.println("Número fuera del rango, por favor intente de nuevo");
                 }
             } else {
                 tecla.next();
@@ -177,7 +184,7 @@ public class Practica1 {
     }
     
     
-    public static int SolicitarParedes(String mensaje, int minimo, int maximo) {
+    public static int SolicitarParedes(String mensaje, int minimo, int maximo) {//Rango paredes [0-13]
         Scanner tecla = new Scanner(System.in);
        
         int paredes;
@@ -188,7 +195,7 @@ public class Practica1 {
                 if (paredes >= minimo && paredes <= maximo) {
                     return paredes;
                 } else {
-                    System.out.println("Número fuera de rango. Intente de nuevo");
+                    System.out.println("Número fuera del rango, por favor intente de nuevo");
                 }
             } else {
                 tecla.next();
@@ -196,7 +203,7 @@ public class Practica1 {
         }
     }
     
-    public static int SolicitarTrampas(String mensaje, int minimo, int maximo) {
+    public static int SolicitarTrampas(String mensaje, int minimo, int maximo) {//Rango trampas [0-10]
         Scanner tecla = new Scanner(System.in);
        
         int trampas;
@@ -207,7 +214,7 @@ public class Practica1 {
                 if (trampas >= minimo && trampas <= maximo) {
                     return trampas;
                 } else {
-                    System.out.println("Número fuera de rango. Intente de nuevo");
+                    System.out.println("Número fuera del rango, por favor intente de nuevo");
                 }
             } else {
                 tecla.next();
