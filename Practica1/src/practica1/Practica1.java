@@ -3,9 +3,9 @@ package practica1;
 import java.util.Scanner;
 
 public class Practica1 {
-
+    static int [][] matriz =null;
+    static Scanner tecla = new Scanner(System.in);
     public static void main(String[] args) {
-        Scanner tecla = new Scanner(System.in);
         int opcion = 0;
         do {
             try {
@@ -86,33 +86,33 @@ public class Practica1 {
         System.out.println("✵INGRESE EL TAMAÑO DE CANTIDAD DE COMIDA: [0-28]:  " + comida);
         System.out.println("✵INGRESE EL TAMAÑO DE CANTIDAD DE PAREDES: [0-13]:  " + paredes);
         System.out.println("✵INGRESE CANTIDAD DE TRAMPAS: [0-10]:              "+ trampas);
-         int m=x*y;
-        int n=m;
+         int m=x*y;//arreglando variables
+        int n=m;//arreglando variables
         
 
         System.out.println("----------------------------------------");
         System.out.println("JUGADOR:  "+nombre);
-        if(n >= 0 && n<=100) {//Matriz del tablero
+      //  if(n >= 0 && n<=100) {//For tablero, congelado en lo que construyo matriz
             //Parte superior del tablero
-            for(int i = 0; i < n; i++) {
-                System.out.print("_");
-            }
-            System.out.println();
+         //  for(int i = 0; i < n; i++) {
+           //     System.out.print("_");
+           // }
+          //  System.out.println();
            
             //Centro del tablero
-            for(int i = 0; i < n-2; i++) {
-                System.out.print("|");
-                for(int j = 0; j < n-2; j++) {
-                    System.out.print(" ");
-                }
-                System.out.println("|");
-            }
+           // for(int i = 0; i < n-2; i++) {
+              //  System.out.print("|");
+               // for(int j = 0; j < n-2; j++) {
+               //     System.out.print(" ");
+            // /   }
+            //    System.out.println("|");
+           // }
            
             //Parte inferior del tablero
-            for(int i = 0; i < n; i++) {
-                System.out.print("_");
-            }
-        }
+         //   for(int i = 0; i < n; i++) {
+            //    System.out.print("_");
+            //}
+        //}
         System.out.println("                                                      ");
         System.out.println("                                                      ");
         System.out.println("-----------------------------------------------------");
@@ -163,7 +163,7 @@ public class Practica1 {
         System.out.print("✯JUGADOR:"+nombre+"       PUNTEO;"+"          VIDAS");
     }
    public static int SolicitarComida(String mensaje, int minimo, int maximo) {//Rango comida [0-28]
-        Scanner tecla = new Scanner(System.in);
+
 
         
         int comida;
@@ -185,7 +185,7 @@ public class Practica1 {
     
     
     public static int SolicitarParedes(String mensaje, int minimo, int maximo) {//Rango paredes [0-13]
-        Scanner tecla = new Scanner(System.in);
+
        
         int paredes;
     while (true) {
@@ -204,7 +204,7 @@ public class Practica1 {
     }
     
     public static int SolicitarTrampas(String mensaje, int minimo, int maximo) {//Rango trampas [0-10]
-        Scanner tecla = new Scanner(System.in);
+
        
         int trampas;
     while (true) {
