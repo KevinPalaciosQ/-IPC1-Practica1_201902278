@@ -1,10 +1,9 @@
 package practica1;
-
 import java.util.Scanner;
-
 public class Practica1 {
     static int [][] matriz =null;
     static Scanner tecla = new Scanner(System.in);
+    static int xd, yd;
     public static void main(String[] args) {
         int opcion = 0;
         do {
@@ -44,24 +43,19 @@ public class Practica1 {
             }
         } while (opcion != 3);
     }
-
     public static void InicioJuego() {   Scanner tecla = new Scanner(System.in);//se llama al juego
         String nombre;
         String tamano;
         int personaje;
-        String movimiento;
-        
+        String movimiento;       
         System.out.print(" POR FAVOR INGRESE SU NOMBRE:");
-        nombre=tecla.nextLine();
-       
-        
-       
+        nombre=tecla.nextLine();      
         System.out.println("POR FAVOR INGRESE EL TAMAÑO DE SU TABLERO[X,Y]:                  ");
         tamano=tecla.next();
         
         String[] Tamano = tamano.split(",");
-        int x = Integer.parseInt(Tamano[0]);
-        int y = Integer.parseInt(Tamano[1]);
+         xd = Integer.parseInt(Tamano[0]);
+         yd = Integer.parseInt(Tamano[1]);
         
         int comida = SolicitarComida("Ingresa un número entre 0 y 28: ", 0, 28);
         int paredes = SolicitarParedes("Ingresa un número entre 0 y 13: ", 0, 13);
@@ -82,50 +76,27 @@ public class Practica1 {
 " |__|"); 
 
         System.out.println("✵INGRESE SU NOMBRE:"+nombre);
-        System.out.println("✵INGRESE EL TAMAÑO DE SU TABLERO:"+x+","+y);
+        System.out.println("✵INGRESE EL TAMAÑO DE SU TABLERO:"+xd+","+yd);
         System.out.println("✵INGRESE EL TAMAÑO DE CANTIDAD DE COMIDA: [0-28]:  " + comida);
         System.out.println("✵INGRESE EL TAMAÑO DE CANTIDAD DE PAREDES: [0-13]:  " + paredes);
         System.out.println("✵INGRESE CANTIDAD DE TRAMPAS: [0-10]:              "+ trampas);
-         int m=x*y;//arreglando variables
-        int n=m;//arreglando variables
-        
 
         System.out.println("----------------------------------------");
         System.out.println("JUGADOR:  "+nombre);
-      //  if(n >= 0 && n<=100) {//For tablero, congelado en lo que construyo matriz
-            //Parte superior del tablero
-         //  for(int i = 0; i < n; i++) {
-           //     System.out.print("_");
-           // }
-          //  System.out.println();
-           
-            //Centro del tablero
-           // for(int i = 0; i < n-2; i++) {
-              //  System.out.print("|");
-               // for(int j = 0; j < n-2; j++) {
-               //     System.out.print(" ");
-            // /   }
-            //    System.out.println("|");
-           // }
-           
-            //Parte inferior del tablero
-         //   for(int i = 0; i < n; i++) {
-            //    System.out.print("_");
-            //}
-        //}
         System.out.println("                                                      ");
         System.out.println("                                                      ");
         System.out.println("-----------------------------------------------------");
-        System.out.println("INTRODUZCA SU POSICIÓN INICIAL: ");
-        movimiento=tecla.next();
-        String[] Movimiento = movimiento.split(",");
-        int v = Integer.parseInt(Movimiento[0]);
-        int w = Integer.parseInt(Movimiento[1]);
-       
+        //System.out.println("INTRODUZCA SU POSICIÓN INICIAL: ");
+        //movimiento=tecla.next();
+       // String[] Movimiento = movimiento.split(",");
+       // int v = Integer.parseInt(Movimiento[0]);
+        //int w = Integer.parseInt(Movimiento[1]);
+        //System.out.println(+v+","+y);
         System.out.println("-----------------------------------------------------");
+        matriz=mat(matriz);  
         switch(personaje){
             case 1:// personaje 1
-                System.out.println(+v+","+w+"☺");// Agregué aca el v,w porque la matriz me da error
+                System.out.println("☺");// Agregué aca el v,w porque la matriz me da error
                 break;
             case 2:// personaje 2
                 System.out.println("☻");
@@ -153,15 +124,15 @@ public class Practica1 {
                 break;
             case 10:// personaje 10
                 System.out.println("♪");
-                break;    
-           
+                break;               
         }
-          
+        
           
          System.out.println("✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯");
          System.out.println("TABLERO");//Aquí va el tablero 
         System.out.print("✯JUGADOR:"+nombre+"       PUNTEO;"+"          VIDAS");
     }
+   
    public static int SolicitarComida(String mensaje, int minimo, int maximo) {//Rango comida [0-28]
 
 
@@ -221,7 +192,46 @@ public class Practica1 {
             }
         }
     }
-    
+ 
+    public static int[][] mat(int[][]m) {
+      // System.out.println("POR FAVOR INGRESE EL TAMAÑO DE SU TABLERO[X,Y]:");
+      // String datosIngresados = tecla.next();
+          
+        
+       //String[] datos = datosIngresados .split(",");//
+       // int x = Integer.parseInt(datos[0]);//meter esto en un método
+        //int y = Integer.parseInt(datos[1]);
+        m = new int [xd][yd];
+      
+    //Parte superior del tablero
+            for(int i = 0; i < (m.length)+2; i++) {
+              System.out.print("_");
+            }
+            System.out.println();
+           
+            //Centro del tablero
+           for(int i = 0; i < (m.length); i++) {
+               System.out.print("|");
+               for(int j = 0; j < (m[i].length); j++) {
+                    System.out.print(" ");//relleno de figuras
+                    
+               }
+               
+               System.out.println("|");
+             //  System.out.println("         ");
+            }
+          
+            //Parte inferior del tablero
+           for(int i = 0; i < (m.length)+2; i++) {
+                System.out.print("¯");
+                
+               //
+          
+            }
+        System.out.println("        ");       
+    return m;
+        
+    }// cierra metodo definirTamano 
         
 }
     
