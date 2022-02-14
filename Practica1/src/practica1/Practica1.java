@@ -1,9 +1,14 @@
 package practica1;
 import java.util.Scanner;
+import java.util.Random;
 public class Practica1 {
     static int [][] matriz =null;
     static Scanner tecla = new Scanner(System.in);
     static int xd, yd;
+    static String nombre;
+    static String movimiento; 
+    static int cantidad;
+    
     public static void main(String[] args) {
         int opcion = 0;
         do {
@@ -20,20 +25,24 @@ public class Practica1 {
                 switch (opcion) {
                     case 1: //Iniciar Juego
                         System.out.println("*****************************");
-                        System.out.println("       INICIAR JUEGO         ");
+                        System.out.println("*       INICIAR JUEGO       *");
                         System.out.println("*****************************");
                     InicioJuego();
                         break;
                     case 2: // Tabla de Posiciones
                         System.out.println("******************************");
                         System.out.println("*     TABLA DE POSICIONES    *");
-                        System.out.println("*****************************");
+                        System.out.println("******************************");
+                    TablaPosiciones();    
+                        
                         break;
                     case 3: //Salir de Menú
                         System.out.println("*****************************");
-                        System.out.println("Adios, tenga un lindo día");
+                        System.out.println("* Adios, tenga un lindo día *");
                         System.out.println("*****************************");
                         break;
+                        
+             
                     default:
                         System.out.println("No ingrese valores no validos \n");
                 }
@@ -42,12 +51,14 @@ public class Practica1 {
                 tecla.nextLine();
             }
         } while (opcion != 3);
+    PantallaPausa();
     }
+    
     public static void InicioJuego() {   Scanner tecla = new Scanner(System.in);//se llama al juego
-        String nombre;
+        //String nombre;
         String tamano;
         int personaje;
-        String movimiento;       
+        
         System.out.print(" POR FAVOR INGRESE SU NOMBRE:");
         nombre=tecla.nextLine();      
         System.out.println("POR FAVOR INGRESE EL TAMAÑO DE SU TABLERO[X,Y]:                  ");
@@ -60,6 +71,8 @@ public class Practica1 {
         int comida = SolicitarComida("Ingresa un número entre 0 y 28: ", 0, 28);
         int paredes = SolicitarParedes("Ingresa un número entre 0 y 13: ", 0, 13);
         int trampas= SolicitarTrampas("Ingresa un número entre 0 y 10: ", 0, 10);
+
+        
         System.out.println("✯DE LAS SIGUIENTES OPCIONES ELIJA UN PERSONAJE:");
         System.out.println("✯{1-☺}{2-☻}{3-♥}{4-♣}{5-♠}{6-♂}{7-♀}{8-☼}{9-♫}{10-♪}");
         personaje=tecla.nextInt();
@@ -80,20 +93,15 @@ public class Practica1 {
         System.out.println("✵INGRESE EL TAMAÑO DE CANTIDAD DE COMIDA: [0-28]:  " + comida);
         System.out.println("✵INGRESE EL TAMAÑO DE CANTIDAD DE PAREDES: [0-13]:  " + paredes);
         System.out.println("✵INGRESE CANTIDAD DE TRAMPAS: [0-10]:              "+ trampas);
-
+int resultado = (comida+paredes+trampas);
+cantidad= resultado;
+        System.out.println(+cantidad);
         System.out.println("----------------------------------------");
         System.out.println("JUGADOR:  "+nombre);
-        System.out.println("                                                      ");
-        System.out.println("                                                      ");
-        System.out.println("-----------------------------------------------------");
-        //System.out.println("INTRODUZCA SU POSICIÓN INICIAL: ");
-        //movimiento=tecla.next();
-       // String[] Movimiento = movimiento.split(",");
-       // int v = Integer.parseInt(Movimiento[0]);
-        //int w = Integer.parseInt(Movimiento[1]);
-        //System.out.println(+v+","+y);
-        System.out.println("-----------------------------------------------------");
-        matriz=mat(matriz);  
+        System.out.println("----------------------------------------");
+    
+        matriz=mat(matriz); 
+        //LLenarmatriz();
         switch(personaje){
             case 1:// personaje 1
                 System.out.println("☺");// Agregué aca el v,w porque la matriz me da error
@@ -126,8 +134,7 @@ public class Practica1 {
                 System.out.println("♪");
                 break;               
         }
-        
-          
+        PosicionInicial();
          System.out.println("✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯");
          System.out.println("TABLERO");//Aquí va el tablero 
         System.out.print("✯JUGADOR:"+nombre+"       PUNTEO;"+"          VIDAS");
@@ -194,13 +201,7 @@ public class Practica1 {
     }
  
     public static int[][] mat(int[][]m) {
-      // System.out.println("POR FAVOR INGRESE EL TAMAÑO DE SU TABLERO[X,Y]:");
-      // String datosIngresados = tecla.next();
-          
-        
-       //String[] datos = datosIngresados .split(",");//
-       // int x = Integer.parseInt(datos[0]);//meter esto en un método
-        //int y = Integer.parseInt(datos[1]);
+
         m = new int [xd][yd];
       
     //Parte superior del tablero
@@ -232,8 +233,87 @@ public class Practica1 {
     return m;
         
     }// cierra metodo definirTamano 
-        
+public static void TablaPosiciones() {
+System.out.println("---------------------");    
+System.out.println("1."+nombre);    
+System.out.println("2."+nombre); 
+System.out.println("3."+nombre); 
+System.out.println("4."+nombre); 
+System.out.println("5."+nombre); 
+System.out.println("6."+nombre); 
+System.out.println("7."+nombre); 
+System.out.println("8."+nombre); 
+System.out.println("9."+nombre); 
+System.out.println("10."+nombre); 
+System.out.println("---------------------");   
+}  
+public static void PosicionInicial() {//para llamar posición incial
+System.out.println("-----------------------------------");
+System.out.println("INTRODUZCA SU POSICIÓN INICIAL: ");
+System.out.println("-----------------------------------");
+        movimiento=tecla.next();
+       String[] Movimiento = movimiento.split(",");
+        int v = Integer.parseInt(Movimiento[0]);
+        int w = Integer.parseInt(Movimiento[1]);
+        System.out.println("La Posición inicial elegida es:"+v+","+w);    
 }
+public static void PantallaPausa() {//Para llamar pantalla de pausa
+System.out.println("     JUEGO PAUSADO     "); 
+System.out.println("-----------------------"); 
+System.out.println("1. CONTINUAR PARTIDA "); 
+System.out.println("2.  TABLA POSICIONES "); 
+System.out.println("3.     SALIR PARTIDA"); 
+System.out.println("-----------------------"); 
+}
+public static void LLenarmatriz() {//Para llenar la matriz
+ 
+    int filas = xd;
+    int columnas = yd;   
+    System.out.println(xd+","+yd);
+     String[][] matriz= new String[filas][columnas] ;
+   
+  for(int a = 0; a < matriz.length; a++) for(int b = 0; b < matriz[0].length; b++)matriz [a][b]="";
+   int aux = 0; 
+          
+   Random posx = new Random ();
+   Random posy = new Random ();
+   Random alimento = new Random();
+    while(aux < cantidad){
+        int auxX = posx.nextInt(filas);
+        int auxY = posy.nextInt(columnas);
+      //  System.out.println(auxX + "-" + auxY);
+        if (matriz[auxX][auxY] == ""){
+            switch (alimento.nextInt(4)){
+            case 0:
+                matriz[auxX][auxY] = "@";
+                break;
+            case 1:
+                matriz[auxX][auxY] = "?";
+                break;  
+            case 2:
+                matriz[auxX][auxY] = "#";
+                break;
+            case 3:
+                matriz[auxX][auxY] = "X";
+                break;    
+        }
+        aux++;
+    }
+ }
+   for (int a = 0; a < matriz.length; a++){
+    for(int b = 0; b < matriz[0].length; b++){
+   if (matriz[a][b] == ""){
+        System.out.print("  ");
+   }else{ 
+        System.out.print(" " + matriz[a][b] + " ");
+   }
+   }
+   System.out.println();
+   
+   } 
+}//fin llenar matriz
+}
+
     
 
 
